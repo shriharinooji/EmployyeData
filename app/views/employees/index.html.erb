@@ -1,0 +1,26 @@
+<ul>
+  <li><%= link_to "Create New", new_employee_path %></li>
+</ul>
+<% if @employees.present? %>
+  <table>
+    <tr>
+      <th>Employee Id</th>
+      <th>Employee Name</th>
+      <th>Employee Email</th>
+      <th>Employee Phone Number</th>
+      <th>Employee DOB</th>
+    </tr>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.id %></td>
+        <td><%= employee.name %></td>
+        <td><%= employee.email_id %></td>
+        <td><%= employee.phone_number %></td>
+        <td><%= employee.dob.to_s %></td>
+        <td><%= link_to "Edit", edit_employee_path(employee) %></td>
+        <td><%= link_to "Destroy", employee_path(employee), method: :delete, data: { confirm: "Are you sure?" } %>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+<% end %>
